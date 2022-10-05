@@ -1,10 +1,71 @@
 package aulaA5;
 public class ContaBanco {
-    int numConta;
-    String tipo;
-    String dono;
-    float saldo;
-    boolean status;
+    public int numConta;
+    protected String tipo;
+    private String dono;
+    private float saldo;
+    private boolean status;
+    
+    public ContaBanco() {
+        setSaldo(0);
+        setStatus(false);
+    }
+    
+    public void abrirConta(String tipo) {
+        setTipo(tipo);
+        setStatus(true);
+        if (tipo == "CC") {
+            setSaldo(50);
+        } else if (tipo == "CP") {
+            setSaldo(150);
+        }
+    }
+    
+    public void fecharConta() {
+        if (getSaldo() > 0) {
+            System.out.println("Error, a conta tem dinheiro");
+        } else if (getSaldo() < 0) {
+            System.out.println("Error, a conta está em débito");
+        } else {
+            setStatus(false);
+        }
+    }
+    
+    public void depositar(float valor) {
+        if (isStatus()) {
+            setSaldo(getSaldo() + valor);
+        } else {
+            System.out.println("Error, a conta está fechada");
+        }
+    }
+    
+    public void sacar(float valor) {
+        if (isStatus()) {
+            if (valor <= getSaldo()) {
+                setSaldo(getSaldo() - valor);
+            } else {
+                System.out.println("Saldo isuficiente");
+            }
+        } else {
+            System.out.println("Error, a conta está fechada");
+        }
+    }
+    
+    public void pagarMensalidade() {
+        if (isStatus()) {
+            if (getTipo() == "CC") {
+                if (12 <= getSaldo()) {
+                    setSaldo(getSaldo() - 12);
+                }
+            } else if (getTipo() == "CP") {
+                if (20 <= getSaldo()) {
+                    setSaldo(getSaldo() - 20);
+                }
+            }
+        } else {
+            System.out.println("Error, a conta está fechada");
+        }
+    }
 
     public int getNumConta() {
         return numConta;
@@ -45,56 +106,6 @@ public class ContaBanco {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
-    public void abrirConta() {
-        this.status = true;
-    }
-    
-    public void fecharConta() {
-        this.status = false;
-    }
-    
-    public void depositar(float valor) {
-        if (status) {
-            this.saldo += valor;
-        } else {
-            System.out.println("Error, a conta está fechada");
-        }
-    }
-    
-    public void sacar(float valor) {
-        if (status) {
-            if (valor <= saldo) {
-                this.saldo -= valor;
-            } else {
-                System.out.println("Saldo isuficiente");
-            }
-        } else {
-            System.out.println("Error, a conta está fechada");
-        }
-    }
-    
-    public void pagarMensalidade(float valor) {
-        if (status) {
-            if (valor <= saldo) {
-                this.saldo -= valor;
-            } else {
-                System.out.println("Saldo isuficiente");
-            }
-        } else {
-            System.out.println("Error, a conta está fechada");
-        }
-    }
 
-    public ContaBanco(int numConta, String tipo, String dono) {
-        this.numConta = numConta;
-        this.tipo = tipo;
-        if (this.tipo == "CC") {
-            this.saldo = 50;
-        } else if (this.tipo == "CP") {
-            this.saldo = 150;
-        }
-        this.dono = dono;
-        this.status = true;
-    }
+
 }
