@@ -52,15 +52,17 @@ public class ContaBanco {
     }
     
     public void pagarMensalidade() {
+        float v = 0;
+        if (getTipo() == "CC") {
+            v = 12;
+        } else if (getTipo() == "CP") {
+            v = 20;
+        }
         if (isStatus()) {
-            if (getTipo() == "CC") {
-                if (12 <= getSaldo()) {
-                    setSaldo(getSaldo() - 12);
-                }
-            } else if (getTipo() == "CP") {
-                if (20 <= getSaldo()) {
-                    setSaldo(getSaldo() - 20);
-                }
+            if (getSaldo() >= v) {
+                setSaldo(getSaldo() - v);
+            } else {
+                System.out.println("Saldo isuficiente");
             }
         } else {
             System.out.println("Error, a conta está fechada");
