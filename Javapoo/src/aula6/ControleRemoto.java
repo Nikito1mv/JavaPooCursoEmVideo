@@ -19,7 +19,7 @@ public class ControleRemoto implements IControlador{
         return volume;
     }
 
-    public void setVolume(int volume) {
+    private void setVolume(int volume) {
         this.volume = volume;
     }
 
@@ -53,6 +53,7 @@ public class ControleRemoto implements IControlador{
 
     @Override
     public void abrirMenu() {
+        System.out.println("----- Menu -----");
         System.out.println("Ligado: " + this.isLigado());
         System.out.println("Volume: " + this.getVolume());
         for (int i = 0; i < this.getVolume(); i+=10) {
@@ -64,37 +65,49 @@ public class ControleRemoto implements IControlador{
 
     @Override
     public void fecharMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("Fechando menu...");
     }
 
     @Override
     public void aumentarVolume() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (this.isLigado() && this.getVolume() < 100){
+            this.setVolume(this.getVolume() + 5);
+        }
     }
 
     @Override
     public void diminuirVolume() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (this.isLigado() && this.getVolume() > 0){
+            this.setVolume(this.getVolume() - 5);
+        }
     }
 
     @Override
     public void ligarMudo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (this.isLigado() && this.getVolume() > 0) {
+            this.setVolume(0);
+        }
     }
 
     @Override
     public void desligarMudo() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (this.isLigado() && this.getVolume() == 0) {
+            this.setVolume(50);
+        }
     }
 
     @Override
     public void play() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (this.isLigado() && !(this.isTocando())) {
+            this.setTocando(true);
+        }
     }
 
     @Override
     public void pause() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (this.isLigado() && this.isTocando()) {
+            this.setTocando(false);
+        }
     }
     
 }
