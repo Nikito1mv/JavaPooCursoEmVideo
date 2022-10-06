@@ -6,6 +6,15 @@ public class ContaBanco {
     private float saldo;
     private boolean status;
     
+    public void estadoAtual() {
+        System.out.println("-----------------------");
+        System.out.println("Conta: " + this.getNumConta());
+        System.out.println("Tipo: " + this.getTipo());
+        System.out.println("Dono: " + this.getDono());
+        System.out.println("Saldo: " + this.getSaldo());
+        System.out.println("Status: " + this.isStatus());
+    }
+    
     public ContaBanco() {
         setSaldo(0);
         setStatus(false);
