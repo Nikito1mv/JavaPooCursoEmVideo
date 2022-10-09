@@ -1,4 +1,4 @@
-package aula6;
+package aulaA6;
 public class ControleRemoto implements IControlador{
     
     // Atribultos
@@ -56,7 +56,7 @@ public class ControleRemoto implements IControlador{
         System.out.println("----- Menu -----");
         System.out.println("Ligado: " + this.isLigado());
         System.out.println("Volume: " + this.getVolume());
-        for (int i = 0; i < this.getVolume(); i+=10) {
+        for (int i = 0; i <= this.getVolume(); i+=10) {
             System.out.print("|");
         }
         System.out.println("");
