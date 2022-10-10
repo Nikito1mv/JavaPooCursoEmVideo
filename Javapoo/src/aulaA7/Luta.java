@@ -99,7 +99,7 @@ public class Luta {
                 }
             }
             
-            System.out.println(vencedor);
+            //System.out.println(vencedor);
             
             System.out.println("VENCEDOR DA LUTA");
             
