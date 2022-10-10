@@ -69,7 +69,7 @@ public class Livro implements IPublicacao{
 
     @Override
     public String toString() {
-        return "Livro{" + "titulo=" + titulo + ", autor=" + autor + ", totPag=" + totPag + ", pagAtual=" + pagAtual + ", aberto=" + aberto + ", leitor=" + leitor.getNome() + '}';
+        return "Livro{" + "titulo=" + titulo + ",\n autor=" + autor + ",\n totPag=" + totPag + ",\n pagAtual=" + pagAtual + ",\n aberto=" + aberto + ",\n leitor=" + leitor.getNome() + '}';
     }
     
     // Métodos interface
@@ -82,31 +82,46 @@ public class Livro implements IPublicacao{
     @Override
     public void fechar() {
         this.setAberto(false);
+        this.setPagAtual(0);
     }
 
     @Override
-    public void folhear() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void folhear(int p) {
+        if(this.isAberto() && p >= 0 && p <= this.getTotPag()) {
+            this.setPagAtual(p);
+        } else {
+            System.out.println("Error");
+        }
     }
 
     @Override
     public void avancarPag() {
-        this.setPagAtual(this.getPagAtual() + 1);
+        if(this.isAberto() && this.getPagAtual() < this.getTotPag()){
+            this.setPagAtual(this.getPagAtual() + 1);
+        } else {
+            System.out.println("Error");
+        }
     }
 
     @Override
     public void voltarPag() {
-        this.setPagAtual(this.getPagAtual() - 1);
+        if(this.isAberto() && this.getPagAtual() > 0){
+            this.setPagAtual(this.getPagAtual() - 1);
+        } else {
+            System.out.println("Error");
+        }
     }
     
     // Métodos operacionais
     
     public void detalhes() {
-        System.out.println("Título: " + this.getTitulo());
-        System.out.println("Autor: " + this.getAutor());
-        System.out.println("Total de páginas: " + this.totPag);
-        System.out.println("Página atual: " + this.pagAtual);
-        System.out.println("Aberto: " + this.isAberto());
-        System.out.println("Leitor: " + this.getLeitor().getNome());
+        System.out.println("---------------------------------");
+        System.out.println("Título: " + this.getTitulo() +
+        "\nAutor: " + this.getAutor() +
+        "\nTotal de páginas: " + this.totPag +
+        "\nPágina atual: " + this.pagAtual +
+        "\nAberto: " + this.isAberto() +
+        "\nLeitor: " + this.getLeitor().getNome());
     }
+
 }
