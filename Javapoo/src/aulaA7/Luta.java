@@ -67,6 +67,7 @@ public class Luta {
             System.out.println("### Desafiado ###");
             this.desafiado.apresentar();
             
+            /*
             int v0 = 0;
             int v1 = 0;
             int v2 = 0;
@@ -100,7 +101,37 @@ public class Luta {
             }
             
             //System.out.println(vencedor);
+            */
+            int vencedor = 0;
             
+            int xp1 = desafiante.getVitorias() + desafiante.getDerrotas() + desafiante.getEmpates();
+            float vi1 = desafiante.getVitorias() / xp1 * 5;
+            float tamanho1 = desafiante.getAltura() * desafiante.getPeso() * 5;
+            Random random = new Random();
+            int sorte1 = random.nextInt(10) * 10;
+            
+            System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
+             
+            float probabilidade1 = xp1 + vi1 + tamanho1 + sorte1;
+            System.out.println("Desafiante: " + probabilidade1);
+            
+            int xp2 = desafiado.getVitorias() + desafiado.getDerrotas() + desafiado.getEmpates();
+            float vi2 = desafiado.getVitorias() / xp2 * 5;
+            float tamanho2 = desafiado.getAltura() * desafiado.getPeso() * 5;
+            int sorte2 = random.nextInt(10) * 10;
+             
+            float probabilidade2 = xp2 + vi2 + tamanho2 + sorte2;
+            System.out.println("Desafiado: " + probabilidade2);
+            
+            if(probabilidade1 > probabilidade2) {
+                vencedor = 1;
+            } else if (probabilidade1 < probabilidade2) {
+                vencedor = 2;
+            } else {
+                vencedor = 0;
+            }
+            
+            System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
             System.out.println("VENCEDOR DA LUTA");
             
             switch (vencedor) {
@@ -120,6 +151,7 @@ public class Luta {
                     this.desafiado.ganharLuta();
                     break;
                 }
+            System.out.println("°°°°°°°°°°°°°°°°°°°°°°°°°°°°°");
         } else {
             System.out.println("Luta não pode acontecer");
         }
