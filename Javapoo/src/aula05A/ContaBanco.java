@@ -1,4 +1,4 @@
-package aulaA5;
+package aula05A;
 public class ContaBanco {
     public int numConta;
     protected String tipo;

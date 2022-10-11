@@ -1,4 +1,4 @@
-package aulaB9;
+package aula09B;
 public class Livro implements IPublicacao{
     // Atribultos
     private String titulo;

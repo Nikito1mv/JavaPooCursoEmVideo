@@ -1,4 +1,4 @@
-package aulaA7;
+package aula07A;
 public class Lutador {
     
     // Atribultos

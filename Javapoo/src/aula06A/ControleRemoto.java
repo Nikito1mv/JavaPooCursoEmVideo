@@ -1,4 +1,4 @@
-package aulaA6;
+package aula06A;
 public class ControleRemoto implements IControlador{
     
     // Atribultos

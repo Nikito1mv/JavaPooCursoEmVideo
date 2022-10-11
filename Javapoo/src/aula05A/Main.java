@@ -1,4 +1,4 @@
-package aulaA5;
+package aula05A;
 public class Main {
     public static void main(String[] args) {
         ContaBanco c1 = new ContaBanco();

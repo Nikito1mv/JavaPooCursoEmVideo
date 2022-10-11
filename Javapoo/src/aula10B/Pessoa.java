@@ -1,16 +1,19 @@
-package aulaB9;
+package aula10B;
 public class Pessoa {
+    
     // Atribultos
+    
     private String nome;
     private int idade;
     private String sexo;
-    // Métodos especiais
-
-    public Pessoa(String nome, int idade, String sexo) {
-        this.nome = nome;
-        this.idade = idade;
-        this.sexo = sexo;
+    
+    // Métodos
+    
+    public void fazerNiver() {
+        this.idade ++;
     }
+    
+    // Métodos especiais
 
     public String getNome() {
         return nome;
@@ -35,9 +38,10 @@ public class Pessoa {
     public void setSexo(String sexo) {
         this.sexo = sexo;
     }
-    
-    // Métodos Operacionais
-    public void fazerNiver() {
-        this.setIdade(this.getIdade() + 1);
+
+    @Override
+    public String toString() {
+        return "Pessoa{" + "nome=" + nome + ", idade=" + idade + ", sexo=" + sexo + '}';
     }
+    
 }

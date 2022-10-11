@@ -1,4 +1,4 @@
-package aulaB9;
+package aula09B;
 public interface IPublicacao {
     public void abrir();
     public void fechar();
